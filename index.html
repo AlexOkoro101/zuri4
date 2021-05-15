@@ -1,0 +1,120 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zuri Frontend Algorithms Task</title>
+</head>
+<body id="app">
+    <input type="text" id="input">
+    <button onclick="convertFahrToCelsius(input)" id="btn">Convert</button>
+</body>
+<style>
+    input {
+        margin: 20px 10px;
+        width: 150px;
+        height: 20px;
+        font-size: 8px;
+        padding-left: 5px;
+        outline: none;
+    }
+    button {
+        background-color: aqua;
+        font-size: 8px;
+        padding: 6px 15px;
+        border: none;
+        color: #444;
+    }
+    p {
+        font-size: 8px;
+        margin: 0 10px;
+        color: red
+    }
+    div {
+        font-size: 8px;
+        margin: 0 10px;
+    }
+</style>
+<script>
+    const inputField = document.getElementById("input");
+    inputField.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById("btn").click();
+        }
+    })
+    
+    var append;
+    
+    
+
+    const convertFahrToCelsius = (number) => {
+    
+        var input = document.getElementById("input").value;
+        
+
+        var alphabets = /[a-z A-Z]/g;
+        var specialChar = /[@#%^({)}'?&]/g;
+        var array = /^\[[\s\S]+\]$/;
+        var objects = /^\{[\s\S]+\}$/;
+        
+
+        if(input.match(alphabets)) {
+            const p = document.createElement("p");
+            p.innerHTML = "You cannot use Alphabets";
+            append = setTimeout(function() {
+                document.getElementById("app").appendChild(p)
+            })
+            setTimeout(function() {
+                p.innerHTML = ''
+            }, 3000)
+            
+            
+        } else if(input.match(array)) {
+            const p = document.createElement("p");
+            p.innerHTML = "Arrays are not allowed";
+            append = setTimeout(function() {
+                document.getElementById("app").appendChild(p)
+            })
+            setTimeout(function() {
+                p.innerHTML = ''
+            }, 3000)
+        } else if(input.match(specialChar)) {
+            const p = document.createElement("p");
+            p.innerHTML = "No special characters allowed";
+            append = setTimeout(function() {
+                document.getElementById("app").appendChild(p)
+            })
+            setTimeout(function() {
+                p.innerHTML = ''
+            }, 3000)
+        } else if(input.match(objects)) {
+            const p = document.createElement("p");
+            p.innerHTML = "Objects are not permitted";
+            append = setTimeout(function() {
+                document.getElementById("app").appendChild(p)
+            })
+            setTimeout(function() {
+                p.innerHTML = ''
+            }, 3000)
+        } else {
+            //1F = 1.8C + 32
+            const celcius = (input - 32) / 1.8;
+            const p = document.createElement("div")
+            p.innerHTML = `${input} Farenheit is equal to ${celcius} Celcius`;
+            
+            document.getElementById("app").appendChild(p)
+            setTimeout(function() {
+                p.innerHTML = ''
+            }, 10000)
+
+        }
+        document.getElementById("input").value = ''
+        
+        
+    }
+    // console.log(convertFahrToCelsius())
+
+
+</script>
+</html>
