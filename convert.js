@@ -13,6 +13,9 @@ const convertFahrToCelsius = (number) => {
     }
     else {
         const celcius = (number - 32) / 1.8;
-        return celcius;
+        const roundup = celcius.toFixed(4)
+        return roundup + " deg C";
     }
 }
+
+
